@@ -1,0 +1,82 @@
+<ion-content [fullscreen]="true">
+  <div class="login-container">
+    <ion-card class="login-card">
+      <ion-card-header>
+        <ion-card-title class="login-title">Iniciar Sesión</ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <form (ngSubmit)="onLogin()">
+          <ion-list lines="none" class="login-form">
+            <ion-item class="form-item">
+              <ion-label position="stacked">Correo Electrónico</ion-label>
+              <ion-input
+                type="email"
+                [(ngModel)]="email"
+                name="email"
+                placeholder="tu@email.com"
+                [clearInput]="true"
+                (ionInput)="clearErrors()"
+                [class.error-input]="emailError !== ''">
+              </ion-input>
+              <div *ngIf="emailError" class="error-message">{{ emailError }}</div>
+            </ion-item>
+            
+            <ion-item class="form-item">
+              <ion-label position="stacked">Contraseña</ion-label>
+              <div class="password-container">
+                <ion-input
+                  [type]="showPassword ? 'text' : 'password'"
+                  [(ngModel)]="password"
+                  name="password"
+                  placeholder="••••••••"
+                  [clearInput]="false"
+                  (ionInput)="clearErrors()"
+                  [class.error-input]="passwordError !== ''">
+                </ion-input>
+                <ion-button
+                  fill="clear"
+                  class="password-toggle"
+                  (click)="togglePasswordVisibility()">
+                  <ion-icon [name]="showPassword ? 'eye-off' : 'eye'" slot="icon-only"></ion-icon>
+                </ion-button>
+              </div>
+              <div *ngIf="passwordError" class="error-message">{{ passwordError }}</div>
+            </ion-item>
+            
+            <ion-button
+              expand="block"
+              type="submit"
+              [disabled]="isLoading"
+              class="login-button">
+              <ion-spinner *ngIf="isLoading" name="lines-small"></ion-spinner>
+              <span *ngIf="!isLoading">Iniciar Sesión</span>
+            </ion-button>
+            
+            <ion-button
+              expand="block"
+              fill="clear"
+              (click)="onForgotPassword()"
+              class="forgot-password-button">
+              ¿Olvidaste tu contraseña?
+            </ion-button>
+            
+            <div class="register-section">
+              <span>¿No tienes cuenta?</span>
+              <ion-button
+                fill="clear"
+                (click)="onRegister()"
+                class="register-button">
+                Regístrate
+              </ion-button>
+            </div>
+          </ion-list>
+        </form>
+      </ion-card-content>
+    </ion-card>
+    
+    <div class="footer-info">
+      <p>© 2024 Ionic POO Refactoring</p>
+    </div>
+  </div>
+</ion-content>

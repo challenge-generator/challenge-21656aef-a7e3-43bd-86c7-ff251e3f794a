@@ -1,0 +1,44 @@
+{
+  "name": "ionic-poo-refactoring",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular",
+  "root": "src",
+  "sourceMapType": "source-map",
+  "npmClient": "npm",
+  "id": "e1a2b3c4",
+  "watchIgnore": [
+    "**/node_modules/**",
+    "**/.git/**",
+    "**/tmp/**",
+    "**/dist/**",
+    "**/android/**",
+    "**/ios/**"
+  ],
+  "plugins": {
+    "Capacitor": {
+      "android": {
+        "path": "android"
+      },
+      "ios": {
+        "path": "ios"
+      }
+    }
+  },
+  "projects": {
+    "app": {
+      "context": "app",
+      "config": {
+        "appId": "com.example.ionicpoo",
+        "appName": "Ionic POO Refactoring",
+        "webDir": "www",
+        "build": "ionic:build",
+        "serve": {
+          "port": 8100,
+          "host": "localhost"
+        }
+      }
+    }
+  }
+}
